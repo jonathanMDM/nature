@@ -1,6 +1,6 @@
 <?php
     /**
-     * Template Name: Single pages
+     * Template Name: beliko
      */
     get_header(); ?>
 
@@ -56,11 +56,25 @@
 
     <!-- session 2 -->
     <section>
-        <div>
-                <?php
-                $sess = get_field('session_2');
-                ?>
-                <h2 class="titulo_2" <?php echo esc_html($sess['titulo_2']);?>></h2>
+        <?php
+        $sess2 = get_field('se2');
+        $video_file  = isset($sess2['video']) ? $sess2['video'] : '';
+        ?>
+        <div class="backg" style="background-image: url(<?php echo esc_url('background_image'); ?>);">
+            <h2 ><?php echo esc_html($sess2['titulo']); ?></h2>
+            <h2 ><?php echo esc_html($sess2['sub_titulo']); ?></h2>
         </div>
-    </section>
- <?php get_footer();
+
+        <?php if ($video_file): ?>
+            <div class="video-container">
+                <video width="560" height="315" controls>
+                    <source src="<?php echo esc_url($video_file); ?>" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        <?php endif; ?>
+
+</section>
+
+
+    <?php get_footer();
