@@ -1,3 +1,1 @@
-import './pattern-product';
-        './slider';
-        './custom-swiper-init.';
+import './pattern-product'

@@ -15,5 +15,3 @@ function atr_run_master()
 }
 
 atr_run_master();
-
-
