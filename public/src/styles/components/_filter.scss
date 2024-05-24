@@ -1,0 +1,351 @@
+.filter {
+    margin-top: 50px;
+    overflow: hidden;
+
+    &__button-movil {
+        position: fixed;
+        right: 10px;
+        z-index: 100;
+        width: 50px;
+        height: 50px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: linear-gradient(145deg, #cacaca, #f0f0f0);
+        box-shadow: 20px 20px 60px #bebebe,
+            -20px -20px 60px #ffffff;
+        cursor: pointer;
+
+        svg {
+            width: 20px;
+            height: 20px;
+            fill: transparent;
+        }
+
+        &--close {
+            display: none;
+        }
+
+        &--categories {
+            left: 10px;
+        }
+
+        @include table {
+            display: none;
+        }
+    }
+
+    &__wrapper {
+        @include table {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+        }
+    }
+
+    &__filter {
+        @include mx-table {
+            position: fixed;
+            left: -100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            transition: all .3s ease;
+            z-index: 910;
+
+            &::after {
+                content: "";
+                position: absolute;
+                z-index: 1;
+                right: 0;
+                top: 0;
+                width: 50%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.421);
+                z-index: -10;
+            }
+
+            .filter {
+                &__aside {
+                    position: relative;
+                    z-index: 1;
+                    width: 50%;
+                    height: 100%;
+                    padding-top: 100px;
+                    background-color: white;
+
+                    .filter__button-movil--close {
+                        position: absolute;
+                        right: -25px;
+                        top: 50px;
+                        display: grid;
+                    }
+                }
+
+                &__h2 {
+                    padding-left: 30px;
+                }
+            }
+
+            &.open {
+                left: 0;
+
+            }
+        }
+    }
+
+    &__aside {}
+
+    &__h2 {
+        margin-bottom: 20px;
+        color: $color-primary;
+        font-size: 18px;
+        letter-spacing: normal;
+
+        @include table {
+            font-size: 22px;
+        }
+
+        @include desktop {
+            font-size: 26px;
+        }
+    }
+
+    &__button {
+        padding: 20px 0 20px 30px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        background-color: #e4e4e4;
+
+        &:nth-child(even) {
+            background-color: rgb(240, 240, 240);
+        }
+
+        &.active {
+            background-color: $color-primary;
+            color: white;
+            font-weight: 600;
+        }
+
+        a {
+            width: 100%;
+            height: 100%;
+            text-align: start;
+        }
+    }
+
+    &__content {}
+
+    &__filters {
+        @include mx-table {
+            position: fixed;
+            right: 0%;
+            top: 0;
+            width: 0%;
+            overflow: hidden;
+            height: 100%;
+            transition: all .3s ease;
+            z-index: 910;
+            display: flex;
+            justify-content: end;
+
+            &::after {
+                content: "";
+                position: absolute;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 50%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.421);
+                z-index: -10;
+
+            }
+
+            &.open {
+                right: 0;
+
+                width: 100%;
+            }
+
+            .filter {
+                &__filters {
+                    &--aside {
+                        position: relative;
+                        z-index: 1;
+                        width: 50%;
+                        height: 100%;
+                        padding-top: 100px;
+                        background-color: white;
+
+                        .filter__button-movil--close {
+                            position: absolute;
+                            left: -25px;
+                            top: 50px;
+                            display: grid;
+                        }
+                    }
+
+                    &--button {
+                        border-right: none;
+                    }
+
+                    &--terms {
+                        position: initial;
+                        opacity: 1;
+                        padding-left: 35px;
+                    }
+                }
+
+            }
+        }
+
+        &--aside {
+            @include table {
+                display: flex;
+                margin-left: 30px;
+                border: 1px solid $color-grey;
+            }
+        }
+
+        &--span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            border-right: 1px solid $color-grey;
+            padding: 16px 24px;
+            font-weight: 600;
+
+            svg {
+                height: 16px;
+            }
+
+            path {
+                fill: transparent;
+            }
+        }
+
+        &--button {
+            padding: 16px 24px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            text-transform: capitalize;
+            cursor: pointer;
+            border-right: 1px solid $color-grey;
+
+            svg {
+                height: 18px;
+            }
+
+            path {
+                fill: transparent;
+            }
+        }
+
+        &--attribute {
+            position: relative;
+
+            &:hover {
+                .filter__filters--terms {
+                    z-index: 10;
+                    opacity: 1;
+                    height: auto;
+                }
+            }
+        }
+
+        &--terms {
+            position: absolute;
+            left: 0;
+            z-index: -10;
+            height: 0%;
+            width: max-content;
+            padding: 8px 15px;
+            display: grid;
+            justify-content: space-between;
+            gap: 10px;
+            background-color: white;
+            opacity: 0;
+            transition: all .3s ease;
+        }
+
+        &--term {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            gap: 15px;
+            cursor: pointer;
+
+            input[type='checkbox'] {
+                appearance: auto;
+
+                &:checked {
+                    background-color: rgba(178, 249, 72, 0.525);
+                }
+            }
+        }
+
+    }
+
+    &__response {
+        position: relative;
+        min-height: 700px;
+        padding: 30px 20px;
+
+        @include table {
+            padding: 30px 0 30px 30px;
+        }
+
+        &--loader {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 10;
+            margin-left: 20px;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            place-items: center;
+            background-color: rgba(255, 255, 255, 0.343);
+            opacity: 1;
+            transition: all .5s ease;
+
+            &.disable {
+                opacity: 0;
+                z-index: -10;
+            }
+
+            @include table {
+                min-height: 510px;
+            }
+        }
+
+        &--ajax {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 20px;
+        }
+    }
+
+    &__pagination {
+        margin-top: 40px;
+        display: none;
+        justify-content: space-between;
+
+        &--button {
+            padding: 8px 20px;
+            border-radius: 15px;
+            width: max-content;
+            color: white;
+            background-color: $color-primary;
+            cursor: pointer;
+
+            &.disabled {
+                pointer-events: none;
+                opacity: .3;
+            }
+        }
+    }
+}

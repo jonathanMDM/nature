@@ -1,0 +1,263 @@
+.shortcode-grid {
+    padding: 40px 0;
+
+    @include table {
+        padding: 60px 0;
+    }
+
+    @include desktop-extra {
+        padding: 70px 0;
+    }
+
+    &__wrapper {}
+
+    &__h2 {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .swiper-product-replic {
+        overflow: hidden;
+
+        .swiper-slide {
+            height: auto !important;
+        }
+    }
+
+    .swiper-slide {
+        border-radius: 15px;
+        overflow: hidden;
+        height: auto;
+    }
+}
+
+.card-product {
+    &__wrapper {}
+
+    &__flag {
+
+        &--discount-percentage,
+        &--new {
+            height: 40px;
+            width: 100px;
+            position: absolute;
+            z-index: 1;
+            left: -36px;
+            top: 0;
+            padding: 0px 16px;
+            display: flex;
+            justify-content: center;
+            align-items: end;
+            font-size: 10px;
+            font-weight: 600;
+            background-color: $color-accent;
+            color: black;
+            rotate: -48deg;
+        }
+
+        &--discount-percentage {
+            background-color: $color-primary;
+        }
+    }
+
+    &__card {
+        height: 100%;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-radius: 15px;
+        overflow: hidden;
+        border: 1px solid $color-primary;
+        background: #FBFBFB;
+        box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.1);
+
+        &:hover {
+            img {
+                scale: 1.1;
+            }
+
+            .card-product {
+                &__buttons {
+                    bottom: 10px;
+                    z-index: 10;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    &__thumbnail {
+        position: relative;
+        height: 300px;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 10px;
+
+        img {
+            height: 100%;
+            object-fit: cover;
+            transition: all .3s ease;
+        }
+    }
+
+    &__figure {
+        height: 100%;
+    }
+
+    &__buttons {
+        position: absolute;
+        bottom: -60px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+        gap: 30px;
+        opacity: 0;
+        transition: all .3s ease;
+
+        @include mx-table {
+            bottom: 10px;
+            z-index: 10;
+            opacity: 1;
+        }
+    }
+
+    &__tooltip {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0.3em 0.6em;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        background: $color-primary;
+        z-index: -1;
+        border-radius: 8px;
+        scale: 0;
+        transform-origin: 0 0;
+        text-transform: capitalize;
+        font-weight: 400;
+        font-size: 16px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+
+        &::before {
+            position: absolute;
+            content: "";
+            height: 0.6em;
+            width: 0.6em;
+            bottom: -0.2em;
+            left: 50%;
+            transform: translate(-50%) rotate(45deg);
+            background: $color-primary;
+        }
+    }
+
+    &__add-cart {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.889);
+        cursor: pointer;
+        transition: all .5s ease;
+
+        svg {
+            fill: transparent;
+        }
+
+        &:hover {
+            scale: 1.1;
+
+            .card-product__tooltip {
+                top: -35%;
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+                scale: 1;
+                font-size: 11px;
+                width: max-content;
+                color: black;
+                animation: shake 0.5s ease-in-out both;
+            }
+        }
+
+        &:active {
+            scale: 0.9;
+        }
+    }
+
+    &__info {
+        padding: 15px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    &__h3 {
+        color: $color-primary;
+        text-transform: uppercase;
+    }
+
+    &__price {
+        font-weight: 600;
+        color: $color-grey;
+    }
+
+    &__view {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__buy-free {
+        position: relative;
+        width: max-content;
+        padding: 12px 12px 12px 42px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 12px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: white;
+            transition: all .5s ease;
+        }
+
+        i {
+            width: 24px;
+            height: auto;
+            position: absolute;
+            left: 12px;
+            transition: all .5s ease;
+            filter: invert(1);
+        }
+
+        svg {
+            fill: transparent;
+        }
+
+        &:hover {
+            background-color: $color-secondary;
+            padding: 12px 42px 12px 12px;
+
+            &::after {
+                width: 100%;
+            }
+
+            i {
+                right: 12px;
+                left: calc(100% - 34px);
+            }
+        }
+    }
+}
