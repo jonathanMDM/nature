@@ -1,0 +1,238 @@
+.main-single-product {
+    width: 90%;
+    max-width: 1040px;
+    margin: 0 auto;
+}
+
+.single_add_to_cart_button {
+    background-color: $color-primary !important;
+}
+
+.single-product {
+    &__shop {
+        margin: 30px 0;
+        padding: 8px 16px;
+        width: max-content;
+        border: 1px solid black;
+    }
+
+    &__wrapper {
+        padding-top: 30px;
+
+        @include table {
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @include desktop {
+            gap: 80px;
+        }
+    }
+
+    &__zoom {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        z-index: 10;
+        padding: 5px;
+        background-color: white;
+        cursor: pointer;
+        transition: all .3s ease;
+
+        &:hover {
+            svg {
+                scale: 1.1;
+            }
+        }
+
+        svg {
+            fill: transparent;
+        }
+    }
+
+    &__slide {
+        position: relative;
+
+        .swiper-slide {
+            background-color: rgba(128, 128, 128, 0.439);
+
+            img {
+                aspect-ratio: 1 / 1;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+    }
+
+    &__controls {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 50px;
+        z-index: 10;
+        display: flex;
+        justify-content: end;
+
+        div {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            border-radius: 10px;
+            background: #e0e0e0;
+            box-shadow: 20px 20px 60px #bebebe,
+                -20px -20px 60px #ffffff55;
+
+            &::after {
+                color: black;
+                font-size: 24px;
+            }
+        }
+    }
+
+    &__data {
+        margin-top: 30px;
+
+        @include table {
+            margin-top: 0;
+        }
+
+        .button-woo {
+            width: 100%;
+            margin-top: 30px;
+            gap: 10px;
+            justify-content: center;
+            -webkit-animation: jello-horizontal 0.9s both;
+            animation: jello-horizontal 0.9s both;
+
+
+            svg {
+                filter: invert(1);
+                transition: all .3s ease;
+            }
+
+            &:hover {
+                svg {
+                    filter: invert(0);
+                }
+            }
+        }
+    }
+
+    &__h1 {
+        font-weight: 700;
+        font-size: clamp(22px, 2.2vw, 28px);
+    }
+
+    &__description {
+        margin: 20px 0;
+        font-size: clamp(14px, 1.4vw, 16px);
+    }
+
+    &__last-unities {
+        width: max-content;
+        margin-top: 30px;
+        padding: 10px 20px;
+        display: block;
+        text-transform: uppercase;
+        font-weight: 500;
+        background-color: $color-complementary;
+        color: black;
+        -webkit-animation: heartbeat 1.5s ease-in-out infinite both;
+        animation: heartbeat 1.5s ease-in-out infinite both;
+    }
+
+    .stock {
+        display: none;
+    }
+
+    &__price {
+        font-weight: 600;
+        font-size: clamp(16px, 1.9vw, 20px);
+        color: $color-secondary;
+    }
+
+    &__sale {}
+
+    &__quantity {}
+
+    .variations {
+        margin-top: 20px;
+
+        tr {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-transform: capitalize;
+        }
+
+        .reset_variations {
+            margin: 10px 0;
+            padding: 0px 10px;
+            font-size: 14px;
+            width: max-content;
+            border: 1px solid black;
+        }
+
+        select {
+            padding-bottom: 5px;
+            text-transform: capitalize;
+            padding-left: 15px;
+
+            border-bottom: 1px solid rgb(181, 181, 181);
+            cursor: pointer;
+        }
+
+    }
+
+    .cart,
+    .woocommerce-variation-add-to-cart {
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+
+        .button {
+            width: 100%;
+        }
+    }
+
+    .qty {
+        height: 2.23rem;
+        font-weight: 700;
+        background: #f3f3f3;
+        border-radius: 4px;
+
+    }
+
+
+}
+
+.more-info {
+    padding: 50px 0;
+
+    @include table {
+        padding: 70px 0;
+    }
+
+    &__h3 {
+        color: $color-primary;
+        font-size: 18px;
+        line-height: normal;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 7.6px;
+
+        @include table {
+            font-size: 22px;
+        }
+
+        @include desktop {
+            font-size: 26px;
+        }
+    }
+
+    &__content {}
+}
